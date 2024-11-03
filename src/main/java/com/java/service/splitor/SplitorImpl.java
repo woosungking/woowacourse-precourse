@@ -1,4 +1,4 @@
-package com.java.util;
+package com.java.service.splitor;
 
 import com.java.exception.ErrorCode;
 
@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Splitor {
+public class SplitorImpl implements Splitor {
 
-    public static final List<String> DELIMITER = new ArrayList<>(Arrays.asList(":", ","));
-    public static final String REGEX = "//(.*?)\\\\n";
+    public  final List<String> DELIMITER = new ArrayList<>(Arrays.asList(":", ","));
+    private  final String REGEX = "//(.*?)\\\\n";
 
-    public static void getCustomDelimiter(String inputValue) {
+    public  void getCustomDelimiter(String inputValue) {
         Pattern pattern = Pattern.compile(REGEX);
         Matcher matcher = pattern.matcher(inputValue);
         if (matcher.find()) {
@@ -22,11 +22,13 @@ public class Splitor {
                 throw new IllegalArgumentException(ErrorCode.CUSTOM_DELIMITER_IS_NOT_VALIDATED.getErrorMessage());
             }
             DELIMITER.add(customDelimiter);
+            DELIMITER.add(matcher.group(0));
             System.out.println(matcher.end());
             String remaining = inputValue.substring(matcher.end()).trim();
             getCustomDelimiter(remaining);
         }
-        System.out.println("추출된 구분자는 다음과 같습니다 => "+DELIMITER);
     }
+
+
 
 }
