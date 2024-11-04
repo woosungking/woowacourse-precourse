@@ -21,12 +21,17 @@ public class OperandServiceImpl implements OperandService {
         List<String> result = Arrays.asList(splitResult);
         return convertStringListToOperand(result);
     }
-
+    @Override
     public void saveOperand(){}
+    @Override
     public void saveOperandList(List<Operand> operandList){
         for(Operand operand : operandList){
             operandRepository.addOperand(operand);
         }
+    }
+    @Override
+    public List<Operand> getOperandList(){
+        return operandRepository.getOperand();
     }
 
 
