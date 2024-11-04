@@ -1,7 +1,6 @@
-package com.java.memory.delimiter;
+package com.java.repository.delimiter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class DelimiterRepository {

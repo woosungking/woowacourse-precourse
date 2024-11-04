@@ -1,4 +1,4 @@
-package com.java.memory.input;
+package com.java.repository.operand;
 
 import java.util.ArrayList;
 import java.util.List;

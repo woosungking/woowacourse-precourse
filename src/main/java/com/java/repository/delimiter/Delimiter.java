@@ -1,7 +1,7 @@
-package com.java.memory.delimiter;
+package com.java.repository.delimiter;
 
 public class Delimiter {
-    private String value;
+    private final String value;
     public Delimiter(String value){
         this.value=value;
     }

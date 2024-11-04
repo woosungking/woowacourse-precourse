@@ -1,4 +1,4 @@
-package com.java.service.splitor;
+package com.java.service.calculator.delimiter;
 
 import com.java.exception.ErrorCode;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SplitorImpl implements Splitor {
+public class DelimiterServiceImpl {
 
     public  final List<String> DELIMITER = new ArrayList<>(Arrays.asList(":", ","));
     private  final String REGEX = "//(.*?)\\\\n";
@@ -28,7 +28,6 @@ public class SplitorImpl implements Splitor {
             getCustomDelimiter(remaining);
         }
     }
-
 
 
 }
