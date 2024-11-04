@@ -1,25 +1,26 @@
 package com.java.controller;
 
-import com.java.io.InputValueHandler;
-import com.java.service.splitor.Splitor;
-import com.java.service.splitor.SplitorImpl;
-import com.java.service.validator.Validator;
+import com.java.service.io.InputValueHandler;
+import com.java.service.calculator.CalculatorFacade;
+import com.java.view.InputView;
+import com.java.view.OutputView;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 public class CalculatorController {
-    private final InputValueHandler inputValueHandler;
-    private final Splitor splitor;
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final CalculatorFacade calculatorFacade;
 
-    public CalculatorController(InputValueHandler inputValueHandler, Splitor splitor) {
-        this.inputValueHandler = inputValueHandler;
-        this.splitor=splitor;
+    public CalculatorController(InputView inputView, OutputView outputView, CalculatorFacade calculatorFacade) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.calculatorFacade = calculatorFacade;
     }
     public void calculator() throws IOException {
-        String value= inputValueHandler.readInput();
-        Validator.startValidate(value);
-        splitor.getCustomDelimiter(value);
+        String value=inputView.stringCalculatorView();
+        calculatorFacade.calculate(value);
+        outputView.stringCalculatorResultView();
 
 
 
