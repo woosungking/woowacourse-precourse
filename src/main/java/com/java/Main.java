@@ -12,8 +12,8 @@ import com.java.service.calculator.calculate.CalculatorService;
 import com.java.service.calculator.calculate.CalculatorServiceImpl;
 import com.java.service.calculator.delimiter.DelimiterService;
 import com.java.service.calculator.delimiter.DelimiterServiceImpl2;
-import com.java.service.calculator.valueextractor.ValueExtractService;
-import com.java.service.calculator.valueextractor.ValueExtractServiceImpl;
+import com.java.service.calculator.operand.OperandService;
+import com.java.service.calculator.operand.OperandServiceImpl;
 import com.java.view.InputView;
 import com.java.view.OutputView;
 
@@ -27,9 +27,9 @@ public class Main {
         DelimiterService delimiterService = new DelimiterServiceImpl2(delimiterRepository);
         OperandRepository operandRepository = new OperandRepository();
         OutputValueRepository outputValueRepository = new OutputValueRepository();
-        ValueExtractService valueExtractService = new ValueExtractServiceImpl(delimiterRepository, operandRepository);
+        OperandService operandService = new OperandServiceImpl(operandRepository);
         CalculatorService calculatorService = new CalculatorServiceImpl(operandRepository, outputValueRepository);
-        CalculatorFacade calculatorFacade = new CalculatorFacadeImpl(delimiterService, valueExtractService, calculatorService);
+        CalculatorFacade calculatorFacade = new CalculatorFacadeImpl(delimiterService, operandService, calculatorService);
 
         OutputView outputView = new OutputView(outputValueRepository);
         InputView inputView = new InputView(inputValueHandler);

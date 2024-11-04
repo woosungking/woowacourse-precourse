@@ -9,11 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class OperandServiceImpl implements OperandService {
-    private final DelimiterRepository delimiterRepository;
     private final OperandRepository operandRepository;
 
-    public OperandServiceImpl(DelimiterRepository delimiterRepository, OperandRepository operandRepository) {
-        this.delimiterRepository = delimiterRepository;
+    public OperandServiceImpl(OperandRepository operandRepository) {
         this.operandRepository = operandRepository;
     }
 
