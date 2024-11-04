@@ -4,23 +4,24 @@ import com.java.repository.operand.Operand;
 import com.java.repository.operand.OperandRepository;
 import com.java.repository.output.OutputValue;
 import com.java.repository.output.OutputValueRepository;
+import com.java.service.calculator.operand.OperandService;
 
 import java.util.List;
 
 public class CalculatorServiceImpl implements CalculatorService{
-    private final OperandRepository operandRepository;
-    private final OutputValueRepository outputValueRepository;
-
-    public CalculatorServiceImpl(OperandRepository operandRepository, OutputValueRepository outputValueRepository) {
-        this.operandRepository = operandRepository;
-        this.outputValueRepository = outputValueRepository;
-    }
-
     @Override
-    public void addValue() {
-        List<Operand> operands = operandRepository.getOperand();
-        List<Integer> sexy = operands.stream().map(Operand::getValue).toList();
-        int sum = sexy.stream().reduce(0, Integer::sum);
-        outputValueRepository.addOutputValue(new OutputValue(sum));
+    public Integer addIntegerListValue(List<Integer> operand) { //여기는 딱 더하기만 해주자.
+        return operand.stream().reduce(0, Integer::sum);
     }
+    @Override
+    public Integer addOperandListValue(List<Operand> operand) { //여기는 딱 더하기만 해주자.
+        List<Integer> integerOperand =  convertOperendListToInteger(operand);
+        return integerOperand.stream().reduce(0, Integer::sum);
+    }
+
+    public List<Integer> convertOperendListToInteger(List<Operand> operandList){
+        List<Integer> integerList = operandList.stream().map(Operand::getValue).toList();
+        return integerList;
+    }
+    
 }
