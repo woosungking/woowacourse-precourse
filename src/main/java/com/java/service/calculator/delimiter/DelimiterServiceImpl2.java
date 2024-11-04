@@ -4,6 +4,7 @@ import com.java.exception.ErrorCode;
 import com.java.repository.delimiter.Delimiter;
 import com.java.repository.delimiter.DelimiterRepository;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,5 +37,20 @@ public class DelimiterServiceImpl2 implements DelimiterService {
     public void saveCustomDelimiter(Delimiter delimiter) {
         delimiterRepository.addDelimiter(delimiter);
     }
+
+    @Override
+    public String generateDelimiterRegex(List<Delimiter> delimiters) {
+        String regex = String.join("|", delimiters.stream()
+                .map(Delimiter::getValue)
+                .map(Pattern::quote)
+                .toArray(String[]::new));
+        return regex;
+    }
+
+    @Override
+    public List<Delimiter> getDelimiterList() {
+        return delimiterRepository.getDelimiterRepo();
+    }
+
 
 }

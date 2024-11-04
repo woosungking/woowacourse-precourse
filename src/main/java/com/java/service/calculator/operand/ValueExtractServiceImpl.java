@@ -1,12 +1,8 @@
-package com.java.service.calculator.valueextractor;
+package com.java.service.calculator.operand;
 
-import com.java.repository.delimiter.Delimiter;
 import com.java.repository.delimiter.DelimiterRepository;
 import com.java.repository.operand.Operand;
 import com.java.repository.operand.OperandRepository;
-
-import java.util.List;
-import java.util.regex.Pattern;
 
 public class ValueExtractServiceImpl implements ValueExtractService{
     private final DelimiterRepository delimiterRepository;
@@ -18,12 +14,7 @@ public class ValueExtractServiceImpl implements ValueExtractService{
     }
 
     @Override
-    public void extractValue(String inputValue) {
-        List<Delimiter> dex = delimiterRepository.getDelimiterRepo();
-        String regex = String.join("|", dex.stream()
-                .map(Delimiter::getValue)
-                .map(Pattern::quote)
-                .toArray(String[]::new));
+    public void extractValue(String inputValue, String regex) {
         String[] splitResult = inputValue.split(regex);
         for(String operand : splitResult){
             operandRepository.addOperand(new Operand(Integer.parseInt(operand)));
