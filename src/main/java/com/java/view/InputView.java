@@ -11,7 +11,7 @@ public class InputView {
         this.inputValueHandler = inputValueHandler;
     }
 
-    public String getStringCalculatorView() throws IOException {
+    public String stringCalculatorView() throws IOException {
         System.out.println(InputMessage.ENTER_VALUE.getMessage());
         return inputValueHandler.readInput();
     }
