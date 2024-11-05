@@ -1,5 +1,7 @@
 package com.java.service.calculator;
 
+import com.java.repository.output.OutputValue;
+
 public interface CalculatorFacade {
-    public void calculate(String value);
+    public OutputValue calculate(String value);
 }
