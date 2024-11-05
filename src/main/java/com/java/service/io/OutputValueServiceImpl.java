@@ -5,10 +5,10 @@ import com.java.repository.output.OutputValueRepository;
 
 import java.util.List;
 
-public class OutputValueHandlerImpl implements OutputValueHandler{
+public class OutputValueServiceImpl implements OutputValueService {
     private final OutputValueRepository outputValueRepository;
 
-    public OutputValueHandlerImpl(OutputValueRepository outputValueRepository) {
+    public OutputValueServiceImpl(OutputValueRepository outputValueRepository) {
         this.outputValueRepository = outputValueRepository;
     }
 
@@ -16,4 +16,5 @@ public class OutputValueHandlerImpl implements OutputValueHandler{
     public List<OutputValue> readOutput() {
         return outputValueRepository.getOutputValue();
     }
+
 }

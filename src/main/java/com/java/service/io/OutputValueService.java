@@ -4,6 +4,6 @@ import com.java.repository.output.OutputValue;
 
 import java.util.List;
 
-public interface OutputValueHandler {
+public interface OutputValueService {
     public List<OutputValue> readOutput();
 }
