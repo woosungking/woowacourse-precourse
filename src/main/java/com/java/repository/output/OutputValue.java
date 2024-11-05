@@ -10,4 +10,5 @@ public class OutputValue {
     public Integer getValue(){
         return this.outputValue;
     }
+
 }

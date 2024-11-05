@@ -3,6 +3,8 @@ package com.java;
 import com.java.controller.CalculatorController;
 import com.java.service.calculator.delimiter.DelimiterFacade;
 import com.java.service.calculator.delimiter.DelimiterFacadeImpl;
+import com.java.service.calculator.operand.OperandFacade;
+import com.java.service.calculator.operand.OperandFacadeImpl;
 import com.java.service.io.input.InputValueServiceImpl;
 import com.java.repository.delimiter.DelimiterRepository;
 import com.java.repository.input.InputValueRepository;
@@ -36,7 +38,8 @@ public class Main {
         CalculatorService calculatorService = new CalculatorServiceImpl();
         OutputView outputView = new OutputView(outputValueService);
         DelimiterFacade delimiterFacade = new DelimiterFacadeImpl(delimiterService);
-        CalculatorFacade calculatorFacade = new CalculatorFacadeImpl(delimiterFacade,operandService,calculatorService,outputValueService,outputView);
+        OperandFacade operandFacade = new OperandFacadeImpl(operandService);
+        CalculatorFacade calculatorFacade = new CalculatorFacadeImpl(delimiterFacade, calculatorService, outputValueService, operandFacade);
         InputView inputView = new InputView(inputValueHandler);
         CalculatorController calculatorController = new CalculatorController(inputView,outputView,calculatorFacade);
         calculatorController.calculator();
