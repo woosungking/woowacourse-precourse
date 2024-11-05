@@ -5,5 +5,7 @@ import com.java.repository.output.OutputValue;
 import java.util.List;
 
 public interface OutputValueService {
-    public List<OutputValue> readOutput();
+    public List<OutputValue> getOutput();
+    public Integer convertOutputToInteger(OutputValue value);
+    public String convertOutputToString(OutputValue value);
 }

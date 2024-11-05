@@ -13,8 +13,18 @@ public class OutputValueServiceImpl implements OutputValueService {
     }
 
     @Override
-    public List<OutputValue> readOutput() {
+    public List<OutputValue> getOutput() {
         return outputValueRepository.getOutputValue();
     }
+    @Override
+    public Integer convertOutputToInteger(OutputValue value){
+        return value.getValue();
+    }
+    @Override
+    public String convertOutputToString(OutputValue value){
+        return String.valueOf(convertOutputToInteger(value));
+    }
+
+
 
 }
