@@ -2,6 +2,7 @@ package com.java.service.io;
 
 import com.java.repository.output.OutputValue;
 import com.java.repository.output.OutputValueRepository;
+import com.java.service.io.util.OutputValueUtil;
 
 import java.util.List;
 
@@ -13,16 +14,17 @@ public class OutputValueServiceImpl implements OutputValueService {
     }
 
     @Override
-    public List<OutputValue> getOutput() {
+    public List<OutputValue> getOutputList() {
         return outputValueRepository.getOutputValue();
     }
+
     @Override
-    public Integer convertOutputToInteger(OutputValue value){
-        return value.getValue();
+    public Integer getOutputValueToInteger(OutputValue outputValue){
+        return OutputValueUtil.convertOutputToInteger(outputValue);
     }
     @Override
-    public String convertOutputToString(OutputValue value){
-        return String.valueOf(convertOutputToInteger(value));
+    public String getOutputValueToString(OutputValue outputValue){
+        return OutputValueUtil.convertOutputToString(outputValue);
     }
 
 
