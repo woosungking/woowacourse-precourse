@@ -1,4 +1,4 @@
-package com.java.service.io;
+package com.java.service.io.input;
 
 import com.java.repository.input.InputValue;
 import com.java.repository.input.InputValueRepository;

@@ -1,8 +1,8 @@
-package com.java.service.io;
+package com.java.service.io.output;
 
 import com.java.repository.output.OutputValue;
 import com.java.repository.output.OutputValueRepository;
-import com.java.service.io.util.OutputValueUtil;
+import com.java.service.io.output.util.OutputValueUtil;
 
 import java.util.List;
 
@@ -27,6 +27,11 @@ public class OutputValueServiceImpl implements OutputValueService {
         return OutputValueUtil.convertOutputToString(outputValue);
     }
 
+    @Override
+    public OutputValue saveOutputValue(OutputValue outputValue) {
+        outputValueRepository.addOutputValue(outputValue);
+        return outputValue;
+    }
 
 
 }

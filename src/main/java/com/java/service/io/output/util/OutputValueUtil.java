@@ -1,4 +1,4 @@
-package com.java.service.io.util;
+package com.java.service.io.output.util;
 
 import com.java.repository.output.OutputValue;
 

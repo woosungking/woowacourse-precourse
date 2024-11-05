@@ -1,4 +1,5 @@
-package com.java.service.io;
+package com.java.service.io.input;
+
 
 import java.io.IOException;
 
