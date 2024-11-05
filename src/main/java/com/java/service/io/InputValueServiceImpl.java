@@ -7,10 +7,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class InputValueHandlerImpl implements InputValueHandler{
+public class InputValueServiceImpl implements InputValueService {
     private final InputValueRepository inputValueRepository;
 
-    public InputValueHandlerImpl(InputValueRepository inputValueRepository1) {
+    public InputValueServiceImpl(InputValueRepository inputValueRepository1) {
         this.inputValueRepository = inputValueRepository1;
     }
 
