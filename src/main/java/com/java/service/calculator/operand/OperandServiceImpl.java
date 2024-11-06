@@ -3,6 +3,8 @@ package com.java.service.calculator.operand;
 import com.java.repository.delimiter.DelimiterRepository;
 import com.java.repository.operand.Operand;
 import com.java.repository.operand.OperandRepository;
+import com.java.service.calculator.operand.util.OperandUtil;
+import com.java.service.calculator.validator.Validator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +40,8 @@ public class OperandServiceImpl implements OperandService {
     public List<Operand> convertStringListToOperand(List<String> strOperand){
         List<Operand> operandList = new ArrayList<>();
         for(String operand : strOperand){
-            operandList.add(new Operand(Integer.parseInt(operand)));
+            Validator.isOnlyInteger(operand);
+            operandList.add(OperandUtil.convertStringToIntegerAndOperand(operand));
         }
         return operandList;
     }
