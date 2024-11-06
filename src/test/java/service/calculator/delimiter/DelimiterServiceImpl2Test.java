@@ -50,5 +50,27 @@ public class DelimiterServiceImpl2Test {
         });
     }
 
+    @Test
+    public void generateDelimiterRegexTest(){
+        //given
+        List<Delimiter> delimiters = List.of(
+                new Delimiter("!"),
+                new Delimiter("//!\\n"),
+                new Delimiter("@"),
+                new Delimiter("//@\\n"),
+                new Delimiter("#"),
+                new Delimiter("//#\\n")
+        );
+        //when
+        String regex = delimiterService.generateDelimiterRegex(delimiters);
+        //then
+        String expectedRegex = Pattern.quote("!") + "|" +
+                Pattern.quote("//!\\n") + "|" +
+                Pattern.quote("@") + "|" +
+                Pattern.quote("//@\\n") + "|" +
+                Pattern.quote("#") + "|" +
+                Pattern.quote("//#\\n");
+        assertEquals(expectedRegex, regex, "정규식이 예상과 일치하지 않습니다.");
 
+    }
 }
