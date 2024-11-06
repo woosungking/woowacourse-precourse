@@ -42,5 +42,13 @@ public class DelimiterServiceImpl2Test {
         assertIterableEquals(expectedDelimiters, actualDelimiters, "구분자 목록이 예상과 일치하지 않습니다.");
     }
 
+    @Test
+    public void extractCustomDelimiterTest_WithIllegalArg_whenDelimiterIsNotSingleCharacter(){
+        String inputValue = "1,2//!@\\n3//@\\n4//#\\n";
+        assertThrows(IllegalArgumentException.class, () -> {
+            delimiterService.extractCustomDelimiter(inputValue);
+        });
+    }
+
 
 }
