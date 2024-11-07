@@ -9,6 +9,7 @@ import com.java.service.calculator.validator.Validator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OperandServiceImpl implements OperandService {
     private final OperandRepository operandRepository;
@@ -20,8 +21,10 @@ public class OperandServiceImpl implements OperandService {
     @Override
     public List<Operand> extractOperand(String inputValue, String regex) {
         String[] splitResult = inputValue.split(regex);
-        List<String> result = Arrays.asList(splitResult);
-        return convertStringListToOperand(result);
+        List<String> result = Arrays.stream(splitResult)
+                .filter(str -> !str.isEmpty())
+                .collect(Collectors.toList());
+        return OperandUtil.convertStringListToOperand(result);
     }
     @Override
     public void saveOperand(){}
@@ -36,13 +39,4 @@ public class OperandServiceImpl implements OperandService {
         return operandRepository.getOperand();
     }
 
-
-    public List<Operand> convertStringListToOperand(List<String> strOperand){
-        List<Operand> operandList = new ArrayList<>();
-        for(String operand : strOperand){
-            Validator.isOnlyInteger(operand);
-            operandList.add(OperandUtil.convertStringToIntegerAndOperand(operand));
-        }
-        return operandList;
-    }
 }
