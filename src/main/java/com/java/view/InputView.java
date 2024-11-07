@@ -1,18 +1,18 @@
 package com.java.view;
 
-import com.java.service.io.InputValueHandler;
+import com.java.service.io.input.InputValueService;
 
 import java.io.IOException;
 
 public class InputView {
-    private final InputValueHandler inputValueHandler;
+    private final InputValueService inputValueService;
 
-    public InputView(InputValueHandler inputValueHandler) {
-        this.inputValueHandler = inputValueHandler;
+    public InputView(InputValueService inputValueService) {
+        this.inputValueService = inputValueService;
     }
 
     public String stringCalculatorView() throws IOException {
         System.out.println(InputMessage.ENTER_VALUE.getMessage());
-        return inputValueHandler.readInput();
+        return inputValueService.readInput();
     }
 }

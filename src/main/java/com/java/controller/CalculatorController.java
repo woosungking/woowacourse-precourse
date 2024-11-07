@@ -1,6 +1,7 @@
 package com.java.controller;
 
-import com.java.service.io.InputValueHandler;
+import com.java.repository.operand.Operand;
+import com.java.repository.output.OutputValue;
 import com.java.service.calculator.CalculatorFacade;
 import com.java.view.InputView;
 import com.java.view.OutputView;
@@ -19,10 +20,8 @@ public class CalculatorController {
     }
     public void calculator() throws IOException {
         String value=inputView.stringCalculatorView();
-        calculatorFacade.calculate(value);
-        outputView.stringCalculatorResultView();
-
-
+        OutputValue result = calculatorFacade.calculate(value);
+        outputView.stringCalculatorResultView(result);
 
     }
 }

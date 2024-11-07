@@ -2,20 +2,20 @@ package com.java.view;
 
 import com.java.repository.output.OutputValue;
 import com.java.repository.output.OutputValueRepository;
+import com.java.service.io.output.OutputValueService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
-    private final OutputValueRepository outputValueRepository;
+    private final OutputValueService outputValueService;
 
-    public OutputView(OutputValueRepository outputValueRepository) {
-        this.outputValueRepository = outputValueRepository;
+    public OutputView(OutputValueService outputValueService) {
+        this.outputValueService = outputValueService;
     }
 
-    public void stringCalculatorResultView(){
-        List<OutputValue> OutputValues= outputValueRepository.getOutputValue();
-        String result = OutputValues.stream().map(OutputValue::getValue).map(String::valueOf).collect(Collectors.joining());
+    public void stringCalculatorResultView(OutputValue outputValue){
+        String result = outputValueService.getOutputValueToString(outputValue); //어떤 인수가 와야하는지 보면 좋을거같아서 이부부은 분리안함.
         System.out.println(OutputMessage.SHOW_RESULT_VALUE.getMessage()+result);
     }
 }
