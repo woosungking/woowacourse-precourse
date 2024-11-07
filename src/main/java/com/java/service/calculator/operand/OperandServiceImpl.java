@@ -21,7 +21,7 @@ public class OperandServiceImpl implements OperandService {
     public List<Operand> extractOperand(String inputValue, String regex) {
         String[] splitResult = inputValue.split(regex);
         List<String> result = Arrays.asList(splitResult);
-        return convertStringListToOperand(result);
+        return OperandUtil.convertStringListToOperand(result);
     }
     @Override
     public void saveOperand(){}
@@ -36,13 +36,4 @@ public class OperandServiceImpl implements OperandService {
         return operandRepository.getOperand();
     }
 
-
-    public List<Operand> convertStringListToOperand(List<String> strOperand){
-        List<Operand> operandList = new ArrayList<>();
-        for(String operand : strOperand){
-            Validator.isOnlyInteger(operand);
-            operandList.add(OperandUtil.convertStringToIntegerAndOperand(operand));
-        }
-        return operandList;
-    }
 }
