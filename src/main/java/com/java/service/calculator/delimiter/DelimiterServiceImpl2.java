@@ -18,10 +18,9 @@ public class DelimiterServiceImpl2 implements DelimiterService {
         this.delimiterRepository = delimiterRepository;
     }
 
-
+    private final List<Delimiter> extractedDelimiter = new ArrayList<>();
     @Override
     public List<Delimiter> extractCustomDelimiter(String inputValue) {
-        List<Delimiter> extractedDelimiter = new ArrayList<>();
         Pattern pattern = Pattern.compile(REGEX);
         Matcher matcher = pattern.matcher(inputValue);
         if (matcher.find()) {

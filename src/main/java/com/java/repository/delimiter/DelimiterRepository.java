@@ -4,16 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DelimiterRepository {
-    private final List<Delimiter> delimiterRepo = new ArrayList<>();
+    private final List<Delimiter> delimiterRepo;
 
     public DelimiterRepository() {
+        delimiterRepo = new ArrayList<>();
         delimiterRepo.add(new Delimiter(":"));
         delimiterRepo.add(new Delimiter(","));
     }
 
     public void addDelimiter(Delimiter delimiter) {
-        System.out.println(delimiter.getValue());
         delimiterRepo.add(delimiter);
+    }
+    public void addAllDelimiter(List<Delimiter> delimiters){
+        for(Delimiter delimiter : delimiters){
+            addDelimiter(delimiter);
+        }
     }
 
     public List<Delimiter> getDelimiterRepo() {

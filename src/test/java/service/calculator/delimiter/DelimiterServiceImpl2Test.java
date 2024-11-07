@@ -73,4 +73,36 @@ public class DelimiterServiceImpl2Test {
         assertEquals(expectedRegex, regex, "정규식이 예상과 일치하지 않습니다.");
 
     }
+
+    @Test
+    public void saveAndGetDelimiterTest(){
+
+        // given
+        List<Delimiter> givenDelimiters = List.of(
+                new Delimiter("!"),
+                new Delimiter("//!\\n"),
+                new Delimiter("@"),
+                new Delimiter("//@\\n"),
+                new Delimiter("#"),
+                new Delimiter("//#\\n")
+        );
+
+        List<Delimiter> expectDelimiters = List.of(
+                new Delimiter(":"),
+                new Delimiter(","),
+                new Delimiter("!"),
+                new Delimiter("//!\\n"),
+                new Delimiter("@"),
+                new Delimiter("//@\\n"),
+                new Delimiter("#"),
+                new Delimiter("//#\\n")
+        );
+        // when
+        delimiterService.saveAllCustomDelimter(givenDelimiters);
+        List<Delimiter> getDelimiters = delimiterService.getDelimiterList();
+        // then
+        for (int i = 0; i < expectDelimiters.size(); i++) {
+            assertEquals(expectDelimiters.get(i).getValue(), getDelimiters.get(i).getValue());
+        }
+    }
 }

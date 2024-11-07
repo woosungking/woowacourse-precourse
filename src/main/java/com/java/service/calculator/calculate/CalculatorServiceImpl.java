@@ -20,8 +20,7 @@ public class CalculatorServiceImpl implements CalculatorService{
     }
 
     public List<Integer> convertOperendListToInteger(List<Operand> operandList){
-        List<Integer> integerList = operandList.stream().map(Operand::getValue).toList();
-        return integerList;
+        return operandList.stream().map(Operand::getValue).toList();
     }
     
 }
