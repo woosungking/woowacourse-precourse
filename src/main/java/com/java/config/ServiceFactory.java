@@ -1,7 +1,7 @@
 package com.java.config;
 
 import com.java.repository.delimiter.DelimiterList;
-import com.java.repository.input.InputValueRepository;
+import com.java.repository.input.InputValueList;
 import com.java.repository.operand.OperandList;
 import com.java.repository.output.OutputValueList;
 import com.java.service.calculator.CalculatorFacade;
@@ -25,7 +25,7 @@ import com.java.view.OutputView;
 public class ServiceFactory {
 
     public static InputValueServiceImpl createInputValueService() {
-        return new InputValueServiceImpl(new InputValueRepository());
+        return new InputValueServiceImpl(new InputValueList());
     }
 
     public static DelimiterList createDelimiterList() {

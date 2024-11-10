@@ -1,14 +1,14 @@
 package service.io;
 
-import com.java.repository.input.InputValueRepository;
+import com.java.repository.input.InputValueList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class InputServiceImplTest {
-    private InputValueRepository inputValueRepository;
+    private InputValueList inputValueList;
     @BeforeEach
     public void beforeEach(){
-        inputValueRepository = new InputValueRepository();
+        inputValueList = new InputValueList();
     }
     @Test
     public void readValueTest(){

@@ -1,17 +1,17 @@
 package com.java.service.io.input;
 
 import com.java.repository.input.InputValue;
-import com.java.repository.input.InputValueRepository;
+import com.java.repository.input.InputValueList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class InputValueServiceImpl implements InputValueService {
-    private final InputValueRepository inputValueRepository;
+    private final InputValueList inputValueList;
 
-    public InputValueServiceImpl(InputValueRepository inputValueRepository1) {
-        this.inputValueRepository = inputValueRepository1;
+    public InputValueServiceImpl(InputValueList inputValueList1) {
+        this.inputValueList = inputValueList1;
     }
     @Override
     public String readInput() throws IOException{
@@ -23,6 +23,6 @@ public class InputValueServiceImpl implements InputValueService {
 
     @Override
     public void saveInput(String inputValue) {
-        inputValueRepository.addInputValue(new InputValue(inputValue));
+        inputValueList.addInputValue(new InputValue(inputValue));
     }
 }
