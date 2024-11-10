@@ -35,6 +35,6 @@ public class CalculatorFacadeImpl implements CalculatorFacade {
         String regex = delimiterFacade.generateRegexFromValue(value);
         List<Operand> operandList = operandFacade.extractAndSaveOperand(regex, value);
         Integer result = calculatorService.addOperandListValue(operandList);
-        return outputValueService.saveOutputValue(new OutputValue(result));
+        return outputValueService.saveOutputValue(OutputValue.of(result));
     }
 }

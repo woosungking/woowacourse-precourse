@@ -1,10 +1,13 @@
 package com.java.repository.output;
 
 public class OutputValue {
-    private final Integer outputValue;
+    private Integer outputValue;
 
-    public OutputValue(Integer outputValue) {
+    private OutputValue(Integer outputValue) {
         this.outputValue = outputValue;
+    }
+    public static OutputValue of(Integer outputValue){
+        return new OutputValue(outputValue);
     }
 
     public Integer getValue(){
