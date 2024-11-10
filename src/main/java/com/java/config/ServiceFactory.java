@@ -3,7 +3,7 @@ package com.java.config;
 import com.java.repository.delimiter.DelimiterList;
 import com.java.repository.input.InputValueRepository;
 import com.java.repository.operand.OperandList;
-import com.java.repository.output.OutputValueRepository;
+import com.java.repository.output.OutputValueList;
 import com.java.service.calculator.CalculatorFacade;
 import com.java.service.calculator.CalculatorFacadeImpl;
 import com.java.service.calculator.calculate.CalculatorService;
@@ -40,16 +40,16 @@ public class ServiceFactory {
         return new OperandList();
     }
 
-    public static OutputValueRepository createOutputValueRepository() {
-        return new OutputValueRepository();
+    public static OutputValueList createOutputValueRepository() {
+        return new OutputValueList();
     }
 
     public static OperandService createOperandService(OperandList operandList) {
         return new OperandServiceImpl(operandList);
     }
 
-    public static OutputValueService createOutputValueService(OutputValueRepository outputValueRepository) {
-        return new OutputValueServiceImpl(outputValueRepository);
+    public static OutputValueService createOutputValueService(OutputValueList outputValueList) {
+        return new OutputValueServiceImpl(outputValueList);
     }
 
     public static CalculatorService createCalculatorService() {

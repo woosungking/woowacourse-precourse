@@ -1,11 +1,7 @@
 package com.java.view;
 
 import com.java.repository.output.OutputValue;
-import com.java.repository.output.OutputValueRepository;
 import com.java.service.io.output.OutputValueService;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class OutputView {
     private final OutputValueService outputValueService;

@@ -3,7 +3,7 @@ package com.java.repository.output;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OutputValueRepository {
+public class OutputValueList {
     private final List<OutputValue> outputValueRepo = new ArrayList<>();
 
     public void addOutputValue(OutputValue outputValue){

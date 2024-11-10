@@ -1,21 +1,21 @@
 package com.java.service.io.output;
 
 import com.java.repository.output.OutputValue;
-import com.java.repository.output.OutputValueRepository;
+import com.java.repository.output.OutputValueList;
 import com.java.service.io.output.util.OutputValueUtil;
 
 import java.util.List;
 
 public class OutputValueServiceImpl implements OutputValueService {
-    private final OutputValueRepository outputValueRepository;
+    private final OutputValueList outputValueList;
 
-    public OutputValueServiceImpl(OutputValueRepository outputValueRepository) {
-        this.outputValueRepository = outputValueRepository;
+    public OutputValueServiceImpl(OutputValueList outputValueList) {
+        this.outputValueList = outputValueList;
     }
 
     @Override
     public List<OutputValue> getOutputList() {
-        return outputValueRepository.getOutputValue();
+        return outputValueList.getOutputValue();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class OutputValueServiceImpl implements OutputValueService {
 
     @Override
     public OutputValue saveOutputValue(OutputValue outputValue) {
-        outputValueRepository.addOutputValue(outputValue);
+        outputValueList.addOutputValue(outputValue);
         return outputValue;
     }
 
