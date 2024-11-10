@@ -23,6 +23,6 @@ public class InputValueServiceImpl implements InputValueService {
 
     @Override
     public void saveInput(String inputValue) {
-        inputValueList.addInputValue(new InputValue(inputValue));
+        inputValueList.addInputValue(InputValue.of(inputValue));
     }
 }
