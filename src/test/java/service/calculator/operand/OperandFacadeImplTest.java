@@ -1,7 +1,7 @@
 package service.calculator.operand;
 
 import com.java.repository.operand.Operand;
-import com.java.repository.operand.OperandRepository;
+import com.java.repository.operand.OperandList;
 import com.java.service.calculator.operand.OperandFacade;
 import com.java.service.calculator.operand.OperandFacadeImpl;
 import com.java.service.calculator.operand.OperandService;
@@ -15,14 +15,14 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class OperandFacadeImplTest {
-    private OperandRepository operandRepository;
+    private OperandList operandList;
     private OperandService operandService;
     private OperandFacade operandFacade;
 
     @BeforeEach
     public void beforeEach(){
-        operandRepository = new OperandRepository();
-        operandService = new OperandServiceImpl(operandRepository);
+        operandList = new OperandList();
+        operandService = new OperandServiceImpl(operandList);
         operandFacade = new OperandFacadeImpl(operandService);
     }
     @Test

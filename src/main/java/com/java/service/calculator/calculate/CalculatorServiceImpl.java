@@ -1,11 +1,7 @@
 package com.java.service.calculator.calculate;
 
 import com.java.repository.operand.Operand;
-import com.java.repository.operand.OperandRepository;
-import com.java.repository.output.OutputValue;
-import com.java.repository.output.OutputValueRepository;
 import com.java.service.calculator.calculate.util.CalculateUtil;
-import com.java.service.calculator.operand.OperandService;
 
 import java.util.List;
 

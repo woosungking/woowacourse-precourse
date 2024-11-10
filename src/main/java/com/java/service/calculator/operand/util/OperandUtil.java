@@ -12,7 +12,7 @@ public class OperandUtil {
     public static Operand convertStringToIntegerAndOperand(String operand){
         try {
             Integer integerOperand = Integer.parseInt(operand);
-            return new Operand(integerOperand);
+            return Operand.of(integerOperand);
         }catch(IllegalArgumentException e){
             throw new IllegalArgumentException(ErrorCode.INPUT_VALUE_ONLY_INTEGER.getErrorMessage() + e);
         }

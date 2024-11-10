@@ -2,7 +2,7 @@ package com.java.config;
 
 import com.java.repository.delimiter.DelimiterList;
 import com.java.repository.input.InputValueRepository;
-import com.java.repository.operand.OperandRepository;
+import com.java.repository.operand.OperandList;
 import com.java.repository.output.OutputValueRepository;
 import com.java.service.calculator.CalculatorFacade;
 import com.java.service.calculator.CalculatorFacadeImpl;
@@ -36,16 +36,16 @@ public class ServiceFactory {
         return new DelimiterServiceImpl2(delimiterList);
     }
 
-    public static OperandRepository createOperandRepository() {
-        return new OperandRepository();
+    public static OperandList createOperandRepository() {
+        return new OperandList();
     }
 
     public static OutputValueRepository createOutputValueRepository() {
         return new OutputValueRepository();
     }
 
-    public static OperandService createOperandService(OperandRepository operandRepository) {
-        return new OperandServiceImpl(operandRepository);
+    public static OperandService createOperandService(OperandList operandList) {
+        return new OperandServiceImpl(operandList);
     }
 
     public static OutputValueService createOutputValueService(OutputValueRepository outputValueRepository) {

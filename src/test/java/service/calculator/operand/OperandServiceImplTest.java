@@ -1,7 +1,7 @@
 package service.calculator.operand;
 
 import com.java.repository.operand.Operand;
-import com.java.repository.operand.OperandRepository;
+import com.java.repository.operand.OperandList;
 import com.java.service.calculator.operand.OperandService;
 import com.java.service.calculator.operand.OperandServiceImpl;
 import org.junit.jupiter.api.Assertions;
@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class OperandServiceImplTest {
-    private  OperandRepository operandRepository;
+    private OperandList operandList;
     private  OperandService operandService;
     @BeforeEach
     public void beforeEach(){
-        operandRepository = new OperandRepository();
-        operandService = new OperandServiceImpl(operandRepository);
+        operandList = new OperandList();
+        operandService = new OperandServiceImpl(operandList);
     }
     @Test
     public void getAndSaveOperandListTest(){

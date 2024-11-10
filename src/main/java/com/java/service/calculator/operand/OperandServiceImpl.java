@@ -1,21 +1,18 @@
 package com.java.service.calculator.operand;
 
-import com.java.repository.delimiter.DelimiterRepository;
 import com.java.repository.operand.Operand;
-import com.java.repository.operand.OperandRepository;
+import com.java.repository.operand.OperandList;
 import com.java.service.calculator.operand.util.OperandUtil;
-import com.java.service.calculator.validator.Validator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class OperandServiceImpl implements OperandService {
-    private final OperandRepository operandRepository;
+    private final OperandList operandList;
 
-    public OperandServiceImpl(OperandRepository operandRepository) {
-        this.operandRepository = operandRepository;
+    public OperandServiceImpl(OperandList operandList) {
+        this.operandList = operandList;
     }
 
     @Override
@@ -31,12 +28,12 @@ public class OperandServiceImpl implements OperandService {
     @Override
     public void saveOperandList(List<Operand> operandList){
         for(Operand operand : operandList){
-            operandRepository.addOperand(operand);
+            this.operandList.addOperand(operand);
         }
     }
     @Override
     public List<Operand> getOperandList(){
-        return operandRepository.getOperand();
+        return operandList.getOperand();
     }
 
 }

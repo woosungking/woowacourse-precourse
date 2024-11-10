@@ -1,7 +1,7 @@
 package com.java.repository.input;
 
 public class InputValue {
-    private final String inputValue;
+    private String inputValue;
 
     public InputValue(String inputValue) {
         this.inputValue = inputValue;
