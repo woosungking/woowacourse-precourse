@@ -1,7 +1,7 @@
 package service.calculator.delimiter;
 
 import com.java.repository.delimiter.Delimiter;
-import com.java.repository.delimiter.DelimiterRepository;
+import com.java.repository.delimiter.DelimiterList;
 import com.java.service.calculator.delimiter.DelimiterService;
 import com.java.service.calculator.delimiter.DelimiterServiceImpl2;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,14 +14,14 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DelimiterServiceImpl2Test {
-    private DelimiterRepository delimiterRepository;
+    private DelimiterList delimiterList;
     private DelimiterService delimiterService;
 
     @BeforeEach
     public void beforeEach(){
         // DelimiterRepository와 DelimiterService 객체를 초기화
-        delimiterRepository = new DelimiterRepository();  // DelimiterRepository 객체 생성
-        delimiterService = new DelimiterServiceImpl2(delimiterRepository);  // DelimiterService 생성
+        delimiterList = new DelimiterList();  // DelimiterRepository 객체 생성
+        delimiterService = new DelimiterServiceImpl2(delimiterList);  // DelimiterService 생성
     }
     @Test
     public void extractCustomDelimiterTest(){
@@ -54,12 +54,12 @@ public class DelimiterServiceImpl2Test {
     public void generateDelimiterRegexTest(){
         //given
         List<Delimiter> delimiters = List.of(
-                new Delimiter("!"),
-                new Delimiter("//!\\n"),
-                new Delimiter("@"),
-                new Delimiter("//@\\n"),
-                new Delimiter("#"),
-                new Delimiter("//#\\n")
+                Delimiter.of("!"),
+                Delimiter.of("//!\\n"),
+                Delimiter.of("@"),
+                Delimiter.of("//@\\n"),
+                Delimiter.of("#"),
+                Delimiter.of("//#\\n")
         );
         //when
         String regex = delimiterService.generateDelimiterRegex(delimiters);
@@ -79,23 +79,23 @@ public class DelimiterServiceImpl2Test {
 
         // given
         List<Delimiter> givenDelimiters = List.of(
-                new Delimiter("!"),
-                new Delimiter("//!\\n"),
-                new Delimiter("@"),
-                new Delimiter("//@\\n"),
-                new Delimiter("#"),
-                new Delimiter("//#\\n")
+                Delimiter.of("!"),
+                Delimiter.of("//!\\n"),
+                Delimiter.of("@"),
+                Delimiter.of("//@\\n"),
+                Delimiter.of("#"),
+                Delimiter.of("//#\\n")
         );
 
         List<Delimiter> expectDelimiters = List.of(
-                new Delimiter(":"),
-                new Delimiter(","),
-                new Delimiter("!"),
-                new Delimiter("//!\\n"),
-                new Delimiter("@"),
-                new Delimiter("//@\\n"),
-                new Delimiter("#"),
-                new Delimiter("//#\\n")
+                Delimiter.of(":"),
+                Delimiter.of(","),
+                Delimiter.of("!"),
+                Delimiter.of("//!\\n"),
+                Delimiter.of("@"),
+                Delimiter.of("//@\\n"),
+                Delimiter.of("#"),
+                Delimiter.of("//#\\n")
         );
         // when
         delimiterService.saveAllCustomDelimter(givenDelimiters);

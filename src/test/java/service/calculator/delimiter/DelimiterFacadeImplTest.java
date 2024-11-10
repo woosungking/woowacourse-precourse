@@ -1,6 +1,6 @@
 package service.calculator.delimiter;
 
-import com.java.repository.delimiter.DelimiterRepository;
+import com.java.repository.delimiter.DelimiterList;
 import com.java.service.calculator.delimiter.DelimiterFacade;
 import com.java.service.calculator.delimiter.DelimiterFacadeImpl;
 import com.java.service.calculator.delimiter.DelimiterService;
@@ -11,13 +11,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DelimiterFacadeImplTest {
-    private DelimiterRepository delimiterRepository;
+    private DelimiterList delimiterList;
     private  DelimiterService delimiterService;
     private  DelimiterFacade delimiterFacade;
     @BeforeEach
     public void beforeEach(){
-        delimiterRepository = new DelimiterRepository();
-        delimiterService = new DelimiterServiceImpl2(delimiterRepository);
+        delimiterList = new DelimiterList();
+        delimiterService = new DelimiterServiceImpl2(delimiterList);
         delimiterFacade = new DelimiterFacadeImpl(delimiterService);
     }
     /*

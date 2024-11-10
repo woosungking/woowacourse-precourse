@@ -2,7 +2,7 @@ package com.java.service.calculator.delimiter;
 
 import com.java.exception.ErrorCode;
 import com.java.repository.delimiter.Delimiter;
-import com.java.repository.delimiter.DelimiterRepository;
+import com.java.repository.delimiter.DelimiterList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,11 +11,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DelimiterServiceImpl2 implements DelimiterService {
-    private final DelimiterRepository delimiterRepository;
+    private final DelimiterList delimiterList;
     private static final String REGEX = "//(.*?)\\\\n";
 
-    public DelimiterServiceImpl2(DelimiterRepository delimiterRepository) {
-        this.delimiterRepository = delimiterRepository;
+    public DelimiterServiceImpl2(DelimiterList delimiterList) {
+        this.delimiterList = delimiterList;
     }
 
     private final List<Delimiter> extractedDelimiter = new ArrayList<>();
@@ -29,7 +29,7 @@ public class DelimiterServiceImpl2 implements DelimiterService {
             if (customDelimiter.length() != 1) {
                 throw new IllegalArgumentException(ErrorCode.CUSTOM_DELIMITER_IS_NOT_VALIDATED.getErrorMessage());
             }
-            extractedDelimiter.addAll(Arrays.asList(new Delimiter(customDelimiter),new Delimiter(customDelimiter2)));
+            extractedDelimiter.addAll(Arrays.asList(Delimiter.of(customDelimiter),Delimiter.of(customDelimiter2)));
             extractCustomDelimiter(inputValue.substring(matcher.end()).trim());
         }
         saveAllCustomDelimter(extractedDelimiter);
@@ -47,17 +47,17 @@ public class DelimiterServiceImpl2 implements DelimiterService {
 
     @Override
     public void saveCustomDelimiter(Delimiter delimiter) {
-        delimiterRepository.addDelimiter(delimiter);
+        delimiterList.addDelimiter(delimiter);
     }
 
     @Override
     public void saveAllCustomDelimter(List<Delimiter> delimiters) {
-        delimiterRepository.addAllDelimiter(delimiters);
+        delimiterList.addAllDelimiter(delimiters);
     }
 
     @Override
     public List<Delimiter> getDelimiterList() {
-        return delimiterRepository.getDelimiterRepo();
+        return delimiterList.getDelimiterRepo();
     }
 
 
